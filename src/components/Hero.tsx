@@ -5,6 +5,10 @@ import './Hero.css';
 const Hero: React.FC = () => {
   return (
     <section className="hero">
+      <div className="hero-background">
+        <img src="/images/hero-bg.jpg" alt="Food sharing background" />
+        <div className="hero-overlay"></div>
+      </div>
       <div className="container">
         <div className="hero-wrapper">
           <div className="hero-content">
@@ -12,12 +16,8 @@ const Hero: React.FC = () => {
             <h2>Together against food waste</h2>
             <p>Redistribute your food surplus in real-time and connect businesses with associations to give food a second life</p>
             <div className="hero-buttons">
-              <Link to="/register">
-                <button className="btn-primary">Join FoodShare</button>
-              </Link>
-              <Link to="/#how">
-                <button className="btn-outline">Discover the platform</button>
-              </Link>
+              <Link to="/register" className="btn-primary">Join FoodShare</Link>
+              <Link to="/food-waste-impact" className="btn-outline">Discover the platform</Link>
             </div>
           </div>
           <div className="hero-image">
