@@ -50,6 +50,10 @@ const Navbar: React.FC = () => {
             >
               Impact
             </button>
+            {/* الرابط الجديد لصفحة Food Waste Impact */}
+            <Link to="/food-waste-impact" className="nav-link-btn impact-link">
+              Food Waste Impact
+            </Link>
           </div>
 
           {/* أزرار Sign in / Sign up في اليمين */}

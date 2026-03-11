@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './ForWhom.css';
 
 const ForWhom: React.FC = () => {
@@ -24,7 +25,9 @@ const ForWhom: React.FC = () => {
               <li><i className="fas fa-check-circle"></i> Tracking dashboard</li>
               <li><i className="fas fa-check-circle"></i> Automatic notifications</li>
             </ul>
-            <button className="btn-outline">I am a business</button>
+            <Link to="/register?type=business" className="btn-outline">
+              I am a business
+            </Link>
           </div>
 
           <div className="card associations">
@@ -40,7 +43,9 @@ const ForWhom: React.FC = () => {
               <li><i className="fas fa-check-circle"></i> Collection planning</li>
               <li><i className="fas fa-check-circle"></i> Impact statistics</li>
             </ul>
-            <button className="btn-primary">I am an association</button>
+            <Link to="/register?type=association" className="btn-primary">
+              I am an association
+            </Link>
           </div>
         </div>
       </div>

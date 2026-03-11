@@ -33,6 +33,12 @@ const Register: React.FC = () => {
     <div className="register-page">
       <div className="register-container">
         <div className="register-header">
+          {/* زر الرجوع للصفحة الرئيسية */}
+          <Link to="/" className="back-to-home">
+            <i className="fas fa-arrow-left"></i>
+            <span>Back to home</span>
+          </Link>
+
           <div className="logo">
             <i className="fas fa-leaf"></i>
             <span>FoodShare</span>
@@ -215,31 +221,6 @@ const Register: React.FC = () => {
             Already have an account? <Link to="/login">Sign in</Link>
           </p>
         </form>
-
-        <div className="register-stats">
-          <p className="stats-text">
-            Join over <strong>700 businesses and associations</strong> using FoodShare to redistribute food surplus.
-          </p>
-          
-          <div className="stats-grid">
-            <div className="stat-item">
-              <h4>For businesses</h4>
-              <ul>
-                <li><i className="fas fa-check"></i> Reduce your waste</li>
-                <li><i className="fas fa-check"></i> Tax deduction</li>
-                <li><i className="fas fa-check"></i> Positive social impact</li>
-              </ul>
-            </div>
-            <div className="stat-item">
-              <h4>For associations</h4>
-              <ul>
-                <li><i className="fas fa-check"></i> Free access to surplus</li>
-                <li><i className="fas fa-check"></i> Geolocation</li>
-                <li><i className="fas fa-check"></i> Real-time notifications</li>
-              </ul>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );

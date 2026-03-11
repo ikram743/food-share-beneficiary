@@ -3,6 +3,30 @@
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
+.for-whom .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.for-whom .section-title {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.for-whom .section-subtitle {
+  font-size: 18px;
+  color: #666;
+  max-width: 700px;
+  margin: 0 auto 50px;
+  line-height: 1.6;
+  text-align: center;
+}
+
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -14,8 +38,10 @@
   background: white;
   border-radius: 30px;
   padding: 50px 40px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
@@ -55,6 +81,7 @@
 .card-features {
   list-style: none;
   margin-bottom: 40px;
+  flex-grow: 1;
 }
 
 .card-features li {
@@ -63,66 +90,177 @@
   align-items: center;
   gap: 10px;
   color: #555;
+  font-size: 15px;
 }
 
 .card-features i {
   color: #2ecc71;
   font-size: 20px;
+  min-width: 24px;
 }
 
-.card button {
+/* أنماط الأزرار */
+.card .btn-outline,
+.card .btn-primary {
+  display: inline-block;
   width: 100%;
-  padding: 15px;
-  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  border: 2px solid transparent;
 }
 
-.associations {
+.card .btn-outline {
+  background: transparent;
+  border: 2px solid #2ecc71;
+  color: #2ecc71;
+}
+
+.card .btn-outline:hover {
+  background: #2ecc71;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+}
+
+.card .btn-primary {
+  background: #2ecc71;
+  border: 2px solid #2ecc71;
+  color: white;
+}
+
+.card .btn-primary:hover {
+  background: #27ae60;
+  border-color: #27ae60;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+}
+
+/* بطاقة الجمعيات (تدرج لوني مختلف) */
+.card.associations {
   background: linear-gradient(135deg, #2ecc71, #27ae60);
   color: white;
 }
 
-.associations .card-icon {
+.card.associations .card-icon {
   background: white;
 }
 
-.associations .card-icon i {
+.card.associations .card-icon i {
   color: #2ecc71;
 }
 
-.associations h3,
-.associations .card-subtitle,
-.associations .card-features li {
+.card.associations h3,
+.card.associations .card-subtitle,
+.card.associations .card-features li {
   color: white;
 }
 
-.associations .card-features i {
+.card.associations .card-features i {
   color: white;
 }
 
-.associations .btn-primary {
+.card.associations .btn-primary {
   background: white;
   color: #2ecc71;
   border: 2px solid white;
 }
 
-.associations .btn-primary:hover {
+.card.associations .btn-primary:hover {
   background: transparent;
   color: white;
+  border-color: white;
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
 }
 
+/* التجاوب مع الشاشات المختلفة */
 @media (max-width: 968px) {
+  .for-whom .section-title {
+    font-size: 36px;
+  }
+
   .cards-grid {
     grid-template-columns: 1fr;
     gap: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .card {
+    padding: 40px 30px;
   }
 }
 
 @media (max-width: 768px) {
+  .for-whom {
+    padding: 60px 0;
+  }
+
+  .for-whom .section-title {
+    font-size: 32px;
+  }
+
+  .for-whom .section-subtitle {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+
   .card {
     padding: 30px 20px;
   }
 
   .card h3 {
     font-size: 24px;
+  }
+
+  .card-features li {
+    font-size: 14px;
+  }
+
+  .card .btn-outline,
+  .card .btn-primary {
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 25px 15px;
+  }
+
+  .card-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .card-icon i {
+    font-size: 30px;
+  }
+
+  .card h3 {
+    font-size: 22px;
+  }
+
+  .card-features li {
+    gap: 8px;
+  }
+
+  .card-features i {
+    font-size: 18px;
+    min-width: 20px;
+  }
+
+  .card .btn-outline,
+  .card .btn-primary {
+    padding: 10px 16px;
+    font-size: 14px;
   }
 }

@@ -17,6 +17,12 @@ const Login: React.FC = () => {
     <div className="login-page">
       <div className="login-container">
         <div className="login-left">
+          {/* زر الرجوع للصفحة الرئيسية */}
+          <Link to="/" className="back-to-home">
+            <i className="fas fa-arrow-left"></i>
+            <span>Back to home</span>
+          </Link>
+
           <div className="login-header">
             <div className="logo">
               <i className="fas fa-leaf"></i>

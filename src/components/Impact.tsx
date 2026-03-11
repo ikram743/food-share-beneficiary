@@ -44,7 +44,7 @@ const Impact: React.FC = () => {
 
         <div className="quote">
           <i className="fas fa-quote-left"></i>
-          <p>Every saved bread can feed a family in need</p>
+          <p>Every saved Food can feed a family in need</p>
         </div>
       </div>
     </section>
