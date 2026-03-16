@@ -1,16 +1,34 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log('Login:', { email, password, rememberMe });
+    setError('');
+
+    // محاكاة تسجيل الدخول (هنا تجي من API حقيقي)
+    if (email && password) {
+      // التحقق من نوع المستخدم
+      if (email.includes('association') || email.includes('beneficiary')) {
+        // إذا كان المستفيد
+        navigate('/beneficiary/dashboard');
+      } else if (email.includes('donor') || email.includes('business')) {
+        // إذا كان متبرع
+        navigate('/donor/dashboard');
+      } else {
+        // مستخدم عادي
+        navigate('/');
+      }
+    } else {
+      setError('Please enter email and password');
+    }
   };
 
   return (
@@ -19,8 +37,7 @@ const Login: React.FC = () => {
         <div className="login-left">
           {/* زر الرجوع للصفحة الرئيسية */}
           <Link to="/" className="back-to-home">
-            <i className="fas fa-arrow-left"></i>
-            <span>Back to home</span>
+            <i className="fas fa-arrow-left"></i> Back to home
           </Link>
 
           <div className="login-header">
@@ -31,6 +48,8 @@ const Login: React.FC = () => {
             <h1>Sign in</h1>
             <p className="subtitle">Sign in to your account to continue</p>
           </div>
+
+          {error && <div className="error-message">{error}</div>}
 
           <form onSubmit={handleSubmit} className="login-form">
             <div className="form-group">
@@ -99,6 +118,29 @@ const Login: React.FC = () => {
               <span>Detailed impact tracking</span>
             </li>
           </ul>
+
+          {/* روابط سريعة للتجربة */}
+          <div className="demo-links">
+            <p>Demo accounts:</p>
+            <button 
+              className="demo-btn"
+              onClick={() => {
+                setEmail('association@nour.dz');
+                setPassword('password123');
+              }}
+            >
+              Beneficiary (Association)
+            </button>
+            <button 
+              className="demo-btn"
+              onClick={() => {
+                setEmail('donor@bakery.dz');
+                setPassword('password123');
+              }}
+            >
+              Donor (Business)
+            </button>
+          </div>
         </div>
       </div>
     </div>

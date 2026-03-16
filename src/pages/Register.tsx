@@ -5,16 +5,21 @@ import './Register.css';
 const Register: React.FC = () => {
   const [accountType, setAccountType] = useState<'business' | 'association'>('business');
   const [formData, setFormData] = useState({
+    // للحساب التجاري
     businessName: '',
-    businessType: '',
     contactName: '',
     email: '',
-    phone: '',
     address: '',
+    phone: '',
+    businessType: 'bakery',
+    
+    // للجمعية
+    associationName: '',
+    registrationNumber: '',
+    
+    // مشتركة
     password: '',
-    confirmPassword: '',
-    organizationName: '',
-    registrationNumber: ''
+    confirmPassword: ''
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -27,18 +32,16 @@ const Register: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Register:', { accountType, ...formData });
+    // هنا هتضيفي منطق التسجيل
   };
 
   return (
     <div className="register-page">
       <div className="register-container">
         <div className="register-header">
-          {/* زر الرجوع للصفحة الرئيسية */}
           <Link to="/" className="back-to-home">
-            <i className="fas fa-arrow-left"></i>
-            <span>Back to home</span>
+            <i className="fas fa-arrow-left"></i> Back to home
           </Link>
-
           <div className="logo">
             <i className="fas fa-leaf"></i>
             <span>FoodShare</span>
@@ -47,6 +50,7 @@ const Register: React.FC = () => {
           <p className="subtitle">Choose your account type to get started</p>
         </div>
 
+        {/* أزرار اختيار نوع الحساب (مشتغلين الآن) */}
         <div className="account-type-toggle">
           <button
             className={`type-btn ${accountType === 'business' ? 'active' : ''}`}
@@ -64,37 +68,21 @@ const Register: React.FC = () => {
           </button>
         </div>
 
+        {/* الفورم (يتغير حسب نوع الحساب) */}
         <form onSubmit={handleSubmit} className="register-form">
           {accountType === 'business' ? (
+            // حقول Business
             <>
-              <div className="form-row">
-                <div className="form-group">
-                  <label>Business name *</label>
-                  <input
-                    type="text"
-                    name="businessName"
-                    placeholder="Artisan Bakery"
-                    value={formData.businessName}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label>Business type *</label>
-                  <select
-                    name="businessType"
-                    value={formData.businessType}
-                    onChange={handleChange}
-                    required
-                  >
-                    <option value="">Bakery, Restaurant, Supermarket...</option>
-                    <option value="bakery">Bakery</option>
-                    <option value="restaurant">Restaurant</option>
-                    <option value="supermarket">Supermarket</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
+              <div className="form-group">
+                <label>Business name *</label>
+                <input
+                  type="text"
+                  name="businessName"
+                  placeholder="e.g. Artisan Bakery"
+                  value={formData.businessName}
+                  onChange={handleChange}
+                  required
+                />
               </div>
 
               <div className="form-row">
@@ -111,6 +99,42 @@ const Register: React.FC = () => {
                 </div>
 
                 <div className="form-group">
+                  <label>Email *</label>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="contact@bakery.dz"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label>Address *</label>
+                <input
+                  type="text"
+                  name="address"
+                  placeholder="123 Business Street, Algiers"
+                  value={formData.address}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Business type</label>
+                  <select name="businessType" value={formData.businessType} onChange={handleChange}>
+                    <option value="bakery">Bakery</option>
+                    <option value="restaurant">Restaurant</option>
+                    <option value="supermarket">Supermarket</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div className="form-group">
                   <label>Phone number</label>
                   <input
                     type="tel"
@@ -123,15 +147,40 @@ const Register: React.FC = () => {
               </div>
             </>
           ) : (
+            // حقول Association
             <>
+              <div className="form-group">
+                <label>Association name *</label>
+                <input
+                  type="text"
+                  name="associationName"
+                  placeholder="e.g. Association Nour"
+                  value={formData.associationName}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Contact name *</label>
+                <input
+                  type="text"
+                  name="contactName"
+                  placeholder="Fatima Zahra"
+                  value={formData.contactName}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
               <div className="form-row">
                 <div className="form-group">
-                  <label>Organization name *</label>
+                  <label>Email *</label>
                   <input
-                    type="text"
-                    name="organizationName"
-                    placeholder="Association Nour"
-                    value={formData.organizationName}
+                    type="email"
+                    name="email"
+                    placeholder="contact@association.dz"
+                    value={formData.email}
                     onChange={handleChange}
                     required
                   />
@@ -150,43 +199,31 @@ const Register: React.FC = () => {
               </div>
 
               <div className="form-group">
-                <label>Contact name *</label>
+                <label>Address *</label>
                 <input
                   type="text"
-                  name="contactName"
-                  placeholder="Fatima Zahra"
-                  value={formData.contactName}
+                  name="address"
+                  placeholder="45 Rue Didouche, Algiers"
+                  value={formData.address}
                   onChange={handleChange}
                   required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Phone number</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="+213 555 123 456"
+                  value={formData.phone}
+                  onChange={handleChange}
                 />
               </div>
             </>
           )}
 
-          <div className="form-group">
-            <label>Email *</label>
-            <input
-              type="email"
-              name="email"
-              placeholder="contact@bakery.dz"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label>Address *</label>
-            <input
-              type="text"
-              name="address"
-              placeholder="123 Republic Street, Algiers"
-              value={formData.address}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
+          {/* حقول كلمة السر مشتركة */}
           <div className="form-row">
             <div className="form-group">
               <label>Password *</label>
@@ -221,6 +258,65 @@ const Register: React.FC = () => {
             Already have an account? <Link to="/login">Sign in</Link>
           </p>
         </form>
+
+        {/* القسم الإضافي (For businesses / For associations) */}
+        <div className="features-section">
+          <div className="features-grid">
+            <div className="feature-card businesses">
+              <div className="feature-icon">
+                <i className="fas fa-store"></i>
+              </div>
+              <h3>For businesses</h3>
+              <ul className="feature-list">
+                <li>
+                  <span className="check-badge">
+                    <i className="fas fa-check"></i>
+                  </span>
+                  <span>Reduce your waste</span>
+                </li>
+                <li>
+                  <span className="check-badge">
+                    <i className="fas fa-check"></i>
+                  </span>
+                  <span>Tax deduction</span>
+                </li>
+                <li>
+                  <span className="check-badge">
+                    <i className="fas fa-check"></i>
+                  </span>
+                  <span>Positive social impact</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="feature-card associations">
+              <div className="feature-icon">
+                <i className="fas fa-heart"></i>
+              </div>
+              <h3>For associations</h3>
+              <ul className="feature-list">
+                <li>
+                  <span className="check-badge">
+                    <i className="fas fa-check"></i>
+                  </span>
+                  <span>Free access to surplus</span>
+                </li>
+                <li>
+                  <span className="check-badge">
+                    <i className="fas fa-check"></i>
+                  </span>
+                  <span>Geolocation</span>
+                </li>
+                <li>
+                  <span className="check-badge">
+                    <i className="fas fa-check"></i>
+                  </span>
+                  <span>Real-time notifications</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
