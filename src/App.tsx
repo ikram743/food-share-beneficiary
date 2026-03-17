@@ -1,23 +1,41 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  BrowserRouter,
-  Navigate,
-} from "react-router-dom";
+import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import ForgotPassword from "./pages/ForgotPassword";
 import FoodWasteImpact from "./pages/FoodWasteImpact";
 import AuthPage from "./pages/AuthPage";
 
+//import DonorLayout from "./components/donor/DonorLayout";
+import DonorDashboard from "./pages/donor/DonorDashboard";
+import DonorSurplus from "./pages/donor/DonorSurplus";
+import DonorAddSurplus from "./pages/donor/DonorAddSurplus";
+import DonorReservations from "./pages/donor/DonorReservations";
+import DonorHistory from "./pages/donor/DonorHistory";
+import DonorStatistics from "./pages/donor/DonorStatistics";
+import DonorProfile from "./pages/donor/DonorProfile";
+import DonorSettings from "./pages/donor/DonorSettings";
+
+import AdminLayout from "./components/admin/AdminLayout";
+import Dashboard from "./pages/admin/Dashboard";
+import Users from "./pages/admin/Users";
+import Surplus from "./pages/admin/Surplus";
+import Notifications from "./pages/admin/Notification";
+import Impact from "./pages/admin/Impact";
+
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<AdminLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="users" element={<Users />} />
+            <Route path="surplus" element={<Surplus />} />
+            <Route path="notifications" element={<Notifications />} />
+            <Route path="impact" element={<Impact />} />
+          </Route>
           {/* Public home page */}
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
 
           {/* Unified authentication page – mode & type controlled via query params */}
           <Route path="/auth" element={<AuthPage />} />

@@ -1,0 +1,38 @@
+/* ========== Surplus Listings Page ========== */
+.surplus-page {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.surplus-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.surplus-filters {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.surplus-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.surplus-table th {
+  text-align: left;
+  padding: 1rem 0.5rem;
+  color: #6b8f7c;
+  font-weight: 500;
+  border-bottom: 2px solid #e2eee8;
+}
+
+.surplus-table td {
+  padding: 1rem 0.5rem;
+  border-bottom: 1px solid #e2eee8;
+}

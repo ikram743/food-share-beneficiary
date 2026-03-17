@@ -1,0 +1,26 @@
+/* ========== Impact Page ========== */
+.impact-page {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.impact-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.impact-header h2 {
+  color: #1e3a2f;
+}
+
+.chart-container {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #fafdfb;
+  border-radius: 1rem;
+  border: 1px solid #e2eee8;
+}
