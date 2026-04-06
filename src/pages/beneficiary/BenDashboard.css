@@ -1,5 +1,13 @@
 
 /* ====== BASE STYLES ====== */
+:root {
+  --primary: #1a5d3c;
+  --primary-dark: #0e3d26;
+  --primary-light: #e8f5e9;
+  --text-dark: #111111;
+  --text-light: #444444;
+}
+
 .ben-dashboard {
   min-height: 100vh;
   background: #f5f7fa;
@@ -13,7 +21,6 @@
   padding: 0 20px;
 }
 
-
 .dashboard-main {
   display: flex;
   gap: 30px;
@@ -21,9 +28,8 @@
   max-width: 1400px;
   margin: 0 auto;
   align-items: flex-start;
-  flex-wrap:nowrap;}
-
-
+  flex-wrap: nowrap;
+}
 
 .ben-sidebar {
   width: 280px;
@@ -38,7 +44,7 @@
   border: 1px solid #f0f0f0;
 }
 
-
+/* ====== أزرار التنقل ====== */
 .navigation-buttons {
   display: flex;
   gap: 10px;
@@ -81,17 +87,16 @@
 }
 
 .home-btn {
-  background: #2ecc71;
+  background: var(--primary);
   color: white;
-  border: 1px solid #27ae60;
+  border: 1px solid var(--primary-dark);
 }
 
 .home-btn:hover {
-  background: #27ae60;
+  background: var(--primary-dark);
   transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(46, 204, 113, 0.2);
+  box-shadow: 0 4px 10px rgba(26, 93, 60, 0.2);
 }
-
 
 .dashboard-content {
   flex: 1;
@@ -116,18 +121,18 @@
 .welcome-section h1 {
   font-size: 24px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-dark);
   margin-bottom: 5px;
 }
 
 .welcome-section p {
-  color: #666;
+  color: var(--text-light);
   font-size: 14px;
 }
 
 .location-badge {
-  background: #e8f5e9;
-  color: #2ecc71;
+  background: var(--primary-light);
+  color: var(--primary);
   padding: 8px 15px;
   border-radius: 50px;
   font-size: 14px;
@@ -160,8 +165,8 @@
 
 .stat-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(46, 204, 113, 0.1);
-  border-color: #2ecc71;
+  box-shadow: 0 10px 25px rgba(26, 93, 60, 0.1);
+  border-color: var(--primary);
 }
 
 .stat-icon {
@@ -177,12 +182,12 @@
 .stat-details h3 {
   font-size: 24px;
   font-weight: 800;
-  color: #1a1a1a;
+  color: var(--text-dark);
   margin-bottom: 3px;
 }
 
 .stat-details p {
-  color: #666;
+  color: var(--text-light);
   font-size: 13px;
 }
 
@@ -197,11 +202,11 @@
 .section-header h2 {
   font-size: 20px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-dark);
 }
 
 .view-all {
-  color: #2ecc71;
+  color: var(--primary);
   text-decoration: none;
   font-size: 14px;
   font-weight: 600;
@@ -252,12 +257,12 @@
 .reservation-info h4 {
   font-size: 16px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--text-dark);
   margin-bottom: 3px;
 }
 
 .reservation-info p {
-  color: #666;
+  color: var(--text-light);
   font-size: 13px;
 }
 
@@ -269,8 +274,8 @@
 }
 
 .status-badge.confirmed {
-  background: #e8f5e9;
-  color: #2ecc71;
+  background: var(--primary-light);
+  color: var(--primary);
 }
 
 .status-badge.pending {
@@ -299,12 +304,12 @@
 .surplus-page .surplus-header h1 {
   font-size: 28px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-dark);
   margin-bottom: 5px;
 }
 
 .surplus-page .surplus-header p {
-  color: #666;
+  color: var(--text-light);
   font-size: 14px;
 }
 
@@ -328,11 +333,11 @@
 }
 
 .view-btn:hover {
-  color: #2ecc71;
+  color: var(--primary);
 }
 
 .view-btn.active {
-  background: #2ecc71;
+  background: var(--primary);
   color: white;
 }
 
@@ -363,7 +368,7 @@
 
 .filter-select:focus {
   outline: none;
-  border-color: #2ecc71;
+  border-color: var(--primary);
 }
 
 .results-count {
@@ -376,7 +381,7 @@
 }
 
 .results-count span {
-  color: #666;
+  color: var(--text-light);
   font-size: 14px;
   font-weight: 500;
 }
@@ -384,7 +389,7 @@
 .btn-reset {
   background: transparent;
   border: none;
-  color: #2ecc71;
+  color: var(--primary);
   font-size: 13px;
   cursor: pointer;
   display: flex;
@@ -394,7 +399,7 @@
 }
 
 .btn-reset:hover {
-  color: #27ae60;
+  color: var(--primary-dark);
   transform: scale(1.05);
 }
 
@@ -421,7 +426,7 @@
 
 .empty-results h3 {
   font-size: 20px;
-  color: #1a1a1a;
+  color: var(--text-dark);
   margin-bottom: 10px;
 }
 
@@ -431,7 +436,7 @@
 }
 
 .btn-primary {
-  background: #2ecc71;
+  background: var(--primary);
   color: white;
   border: none;
   padding: 12px 24px;
@@ -446,9 +451,9 @@
 }
 
 .btn-primary:hover {
-  background: #27ae60;
+  background: var(--primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+  box-shadow: 0 5px 15px rgba(26, 93, 60, 0.3);
 }
 
 /* ====== RESERVATIONS PAGE SPECIFIC ====== */
@@ -459,12 +464,12 @@
 .reservations-page .reservations-header h1 {
   font-size: 28px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-dark);
   margin-bottom: 5px;
 }
 
 .reservations-page .reservations-header p {
-  color: #666;
+  color: var(--text-light);
   font-size: 14px;
 }
 
@@ -507,11 +512,11 @@
 }
 
 .filter-tab:hover {
-  color: #2ecc71;
+  color: var(--primary);
 }
 
 .filter-tab.active {
-  background: #2ecc71;
+  background: var(--primary);
   color: white;
 }
 
@@ -531,7 +536,7 @@
 /* ====== RESPONSIVE ====== */
 @media (max-width: 1024px) {
   .dashboard-main {
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
   }
 
   .ben-sidebar {
@@ -651,56 +656,4 @@
     width: 35px;
     height: 35px;
   }
-}
-/* أزرار التنقل */
-.navigation-buttons {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-  padding: 8px 12px;
-  background: #f8f9fa;
-  border-radius: 40px;
-  width: fit-content;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-  border: 1px solid #eaeaea;
-}
-
-.nav-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 16px;
-  border: none;
-  border-radius: 30px;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.nav-btn i {
-  font-size: 13px;
-}
-
-.back-btn {
-  background: white;
-  color: #555;
-  border: 1px solid #ddd;
-}
-
-.back-btn:hover {
-  background: #f5f5f5;
-  transform: translateX(-2px);
-}
-
-.home-btn {
-  background: #2ecc71;
-  color: white;
-  border: 1px solid #27ae60;
-}
-
-.home-btn:hover {
-  background: #27ae60;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(46, 204, 113, 0.2);
 }

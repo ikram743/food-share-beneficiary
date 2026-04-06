@@ -1,4 +1,10 @@
 /* ====== BENEFICIARY SIDEBAR ====== */
+:root {
+  --primary: #1a5d3c;
+  --primary-dark: #0e3d26;
+  --primary-light: #e8f5e9;
+}
+
 .ben-sidebar {
   width: 280px;
   background: white;
@@ -24,7 +30,7 @@
   gap: 10px;
   font-size: 22px;
   font-weight: 700;
-  color: #2ecc71;
+  color: var(--primary);
   margin-bottom: 5px;
 }
 
@@ -69,21 +75,21 @@
 
 .nav-item:hover {
   background: #f8f9fa;
-  color: #2ecc71;
+  color: var(--primary);
 }
 
 .nav-item:hover i {
-  color: #2ecc71;
+  color: var(--primary);
 }
 
 .nav-item.active {
-  background: #e8f5e9;
-  color: #2ecc71;
-  border-left: 3px solid #2ecc71;
+  background: var(--primary-light);
+  color: var(--primary);
+  border-left: 3px solid var(--primary);
 }
 
 .nav-item.active i {
-  color: #2ecc71;
+  color: var(--primary);
 }
 
 .sidebar-footer {
