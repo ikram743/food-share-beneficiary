@@ -215,7 +215,7 @@ const Home: React.FC = () => {
             </div>
           </div>
           <div className="footer-bottom">
-            <p>© 2026 FoodShare. All rights reserved. Developed by Boudaoud Sid Ahmed</p>
+            <p>© 2026 FoodShare. All rights reserved. Developed by us</p>
           </div>
         </div>
       </footer>

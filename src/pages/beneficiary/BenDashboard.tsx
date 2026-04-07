@@ -1,183 +1,100 @@
-import React, { useState } from "react";
-import BenHeader from "../../components/beneficiary/BenHeader";
-import BenSidebar from "../../components/beneficiary/BenSidebar";
-import SurplusCard from "../../components/beneficiary/SurplusCard";
-import "./BenDashboard.css";
+// src/pages/beneficiary/BenDashboard.tsx
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './BenDashboard.css';
 
-const BenDashboard: React.FC = () => {
-  const [stats] = useState({
-    availableSurplus: 24,
-    myReservations: 8,
-    completedPickups: 16,
-    savedMeals: 245,
-  });
+const BenDashboard = () => {
+  const navigate = useNavigate();
+  const [activeMenu, setActiveMenu] = useState('dashboard');
 
-  const [nearbySurplus] = useState([
-    {
-      id: 1,
-      title: "Fresh Bread",
-      donor: "Artisan Bakery",
-      distance: 0.5,
-      quantity: "10 kg",
-      expiry: "2026-03-15",
-      category: "Bakery",
-    },
-    {
-      id: 2,
-      title: "Mixed Vegetables",
-      donor: "Green Market",
-      distance: 1.2,
-      quantity: "8 kg",
-      expiry: "2026-03-14",
-      category: "Vegetables",
-    },
-    {
-      id: 3,
-      title: "Prepared Meals",
-      donor: "Restaurant El Djazair",
-      distance: 2.1,
-      quantity: "15 portions",
-      expiry: "2026-03-13",
-      category: "Prepared Food",
-    },
-  ]);
+  const menuItems = [
+    { id: 'dashboard', name: 'Dashboard', icon: '📊', path: '/beneficiary/dashboard' },
+    { id: 'surplus', name: 'Food Surplus', icon: '🍽️', path: '/beneficiary/surplus' },
+    { id: 'reservations', name: 'Reservations', icon: '📋', path: '/beneficiary/reservations' },
+    { id: 'history', name: 'History', icon: '📜', path: '/beneficiary/history' },
+    { id: 'profile', name: 'Profile', icon: '👤', path: '/beneficiary/profile' },
+    { id: 'settings', name: 'Settings', icon: '⚙️', path: '/beneficiary/settings' }
+  ];
 
-  const [recentReservations] = useState([
-    {
-      id: 1,
-      title: "Fresh Bread",
-      donor: "Artisan Bakery",
-      date: "2026-03-10",
-      status: "confirmed",
-    },
-    {
-      id: 2,
-      title: "Vegetables",
-      donor: "Green Market",
-      date: "2026-03-09",
-      status: "pending",
-    },
-    {
-      id: 3,
-      title: "Fruits",
-      donor: "Fresh Mart",
-      date: "2026-03-08",
-      status: "completed",
-    },
-  ]);
+  const stats = [
+    { icon: '🍲', number: '12', label: 'Available Surplus' },
+    { icon: '📌', number: '03', label: 'Active Reservations' },
+    { icon: '✅', number: '08', label: 'Completed Orders' }
+  ];
+
+  const surplusItems = [
+    { id: 1, name: 'Ready Meals', donor: 'Al Salam Restaurant', quantity: '50 meals', expiry: '2024-12-31', location: 'Tunis' },
+    { id: 2, name: 'Fresh Bread', donor: 'Al Noor Bakery', quantity: '100 pieces', expiry: '2024-12-30', location: 'Ariana' },
+    { id: 3, name: 'Vegetables', donor: 'Al Fallah Market', quantity: '30 kg', expiry: '2024-12-29', location: 'Ben Arous' }
+  ];
 
   return (
-    <div className="ben-dashboard">
-      <BenHeader />
-
-      <div className="dashboard-main container">
-        <BenSidebar />
-
-        <div className="dashboard-content">
-          {/* أزرار التنقل - فوق كل المحتوى */}
-          <div className="navigation-buttons">
-            <button
-              className="nav-btn back-btn"
-              onClick={() => window.history.back()}
+    <div className="dashboard-wrapper">
+      {/* Sidebar */}
+      <div className="sidebar-wrapper">
+        
+               <div className="sidebar-logo">
+ 
+                <i className="fas fa-leaf"></i>
+                <span>FoodShare</span>
+              </div>
+        <div className="sidebar-menu">
+          {menuItems.map(item => (
+            <div
+              key={item.id}
+              className={`menu-link ${activeMenu === item.id ? 'active' : ''}`}
+              onClick={() => {
+                setActiveMenu(item.id);
+                navigate(item.path);
+              }}
             >
-              <i className="fas fa-arrow-left"></i> Back
-            </button>
-            <button
-              className="nav-btn home-btn"
-              onClick={() => (window.location.href = "/")}
-            >
-              <i className="fas fa-home"></i> Home
-            </button>
-          </div>
+              <span className="menu-icon">{item.icon}</span>
+              <span className="menu-text">{item.name}</span>
+            </div>
+          ))}
+        </div>
+        <div className="sidebar-logout" onClick={() => navigate('/')}>
+          <span className="menu-icon">🚪</span>
+          <span className="menu-text">Logout</span>
+        </div>
+      </div>
 
-          <div className="welcome-section">
-            <div>
-              <h1>Welcome back, Association Nour! 👋</h1>
-              <p>Here's what's available near you</p>
-            </div>
-            <div className="location-badge">
-              <i className="fas fa-map-marker-alt"></i> Algiers, 3 km radius
-            </div>
-          </div>
+      {/* Main Content */}
+      <div className="content-wrapper">
+        <div className="content-header">
+          <h1>Welcome back, Ahmed!</h1>
+          <p>Here's what's happening with your food surplus today</p>
+        </div>
 
-          <div className="stats-grid">
-            <div className="stat-card">
-              <div className="stat-icon" style={{ background: "#e8f5e9" }}>
-                <i className="fas fa-box" style={{ color: "#2ecc71" }}></i>
-              </div>
-              <div className="stat-details">
-                <h3>{stats.availableSurplus}</h3>
-                <p>Available Surplus</p>
-              </div>
+        <div className="stats-row">
+          {stats.map((stat, i) => (
+            <div key={i} className="stat-box">
+              <div className="stat-emoji">{stat.icon}</div>
+              <div className="stat-num">{stat.number}</div>
+              <div className="stat-title">{stat.label}</div>
             </div>
-            <div className="stat-card">
-              <div className="stat-icon" style={{ background: "#fff3e0" }}>
-                <i className="fas fa-clock" style={{ color: "#f39c12" }}></i>
-              </div>
-              <div className="stat-details">
-                <h3>{stats.myReservations}</h3>
-                <p>My Reservations</p>
-              </div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-icon" style={{ background: "#e8eaf6" }}>
-                <i
-                  className="fas fa-check-circle"
-                  style={{ color: "#3498db" }}
-                ></i>
-              </div>
-              <div className="stat-details">
-                <h3>{stats.completedPickups}</h3>
-                <p>Completed Pickups</p>
-              </div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-icon" style={{ background: "#fef5f5" }}>
-                <i className="fas fa-utensils" style={{ color: "#e74c3c" }}></i>
-              </div>
-              <div className="stat-details">
-                <h3>{stats.savedMeals}</h3>
-                <p>Meals Saved</p>
-              </div>
-            </div>
-          </div>
+          ))}
+        </div>
 
-          <div className="nearby-section">
-            <div className="section-header">
-              <h2>Nearby Surplus</h2>
-              <a href="/beneficiary/surplus" className="view-all">
-                View all <i className="fas fa-arrow-right"></i>
-              </a>
-            </div>
-            <div className="surplus-grid">
-              {nearbySurplus.map((item) => (
-                <SurplusCard key={item.id} surplus={item} />
-              ))}
-            </div>
+        <div className="surplus-card-list">
+          <div className="section-title">
+            <h2>🍽️ Available Food Surplus</h2>
+            <button onClick={() => navigate('/beneficiary/surplus')}>View All →</button>
           </div>
-
-          <div className="recent-section">
-            <div className="section-header">
-              <h2>Recent Reservations</h2>
-              <a href="/beneficiary/reservations" className="view-all">
-                View all <i className="fas fa-arrow-right"></i>
-              </a>
-            </div>
-            <div className="reservations-list">
-              {recentReservations.map((item) => (
-                <div key={item.id} className="reservation-item">
-                  <div className="reservation-info">
-                    <h4>{item.title}</h4>
-                    <p>
-                      {item.donor} • {item.date}
-                    </p>
-                  </div>
-                  <span className={`status-badge ${item.status}`}>
-                    {item.status}
-                  </span>
+          <div className="card-grid">
+            {surplusItems.map(item => (
+              <div key={item.id} className="food-card">
+                <span className="food-badge">Available</span>
+                <h3>{item.name}</h3>
+                <p className="food-donor">🏪 {item.donor}</p>
+                <div className="food-details">
+                  <span>📦 {item.quantity}</span>
+                  <span>📅 {item.expiry}</span>
+                  <span>📍 {item.location}</span>
                 </div>
-              ))}
-            </div>
+                <button className="reserve-btn">Reserve Now</button>
+              </div>
+            ))}
           </div>
         </div>
       </div>
