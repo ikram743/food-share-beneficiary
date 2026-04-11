@@ -1,8 +1,11 @@
+// src/pages/Home.tsx
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Home.css';
 
 const Home: React.FC = () => {
+  const navigate = useNavigate();
+  
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -12,6 +15,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="home-page">
+      {/* ========== NAVBAR ========== */}
       <nav className="navbar">
         <div className="nav-container">
           <Link to="/" className="logo">
@@ -43,43 +47,29 @@ const Home: React.FC = () => {
         </div>
       </nav>
 
-      <section 
-        className="hero" 
-        style={{ 
-          backgroundImage: 'url(/hero-bg.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          position: 'relative'
-        }}
-      >
+      {/* ========== HERO SECTION ========== */}
+      <section className="hero">
         <div className="hero-overlay"></div>
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <div className="hero-wrapper">
-            <div className="hero-content">
-              <h1>Technological solution <br />with social impact</h1>
-              <h2 style={{ 
-                fontSize: '36px', 
-                fontWeight: '800', 
-                color: '#1a5d3c', 
-                backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                display: 'inline-block',
-                padding: '10px 30px',
-                borderRadius: '50px',
-                marginBottom: '25px',
-                textAlign: 'center'
-              }}>
-                Together against food waste
-              </h2>
-              <p>Redistribute your food surplus in real-time and connect businesses with associations to give food a second life</p>
-              <div className="hero-buttons">
-                <Link to="/register" className="btn-primary">Join FoodShare</Link>
-                <Link to="/food-waste-impact" className="btn-outline">Discover the platform</Link>
-              </div>
+        <div className="container">
+          <div className="hero-content">
+            <h1>Technological solution <br />with social impact</h1>
+            <div className="hero-tagline">
+              <h2>Together against food waste</h2>
+            </div>
+            <p>Redistribute your food surplus in real-time and connect businesses with associations to give food a second life</p>
+            <div className="hero-buttons">
+              <button onClick={() => navigate('/register')} className="btn-primary">
+                <i className="fas fa-leaf"></i> Join FoodShare
+              </button>
+              <button onClick={() => navigate('/discover')} className="btn-outline">
+                <i className="fas fa-chart-line"></i> Discover the platform
+              </button>
             </div>
           </div>
         </div>
       </section>
 
+      {/* ========== HOW IT WORKS SECTION ========== */}
       <section id="how" className="how-it-works">
         <div className="container">
           <h2 className="section-title">How does it work?</h2>
@@ -109,6 +99,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* ========== FOR WHOM SECTION ========== */}
       <section id="whom" className="for-whom">
         <div className="container">
           <h2 className="section-title">For whom?</h2>
@@ -127,7 +118,9 @@ const Home: React.FC = () => {
                 <li><i className="fas fa-check-circle"></i> Tracking dashboard</li>
                 <li><i className="fas fa-check-circle"></i> Automatic notifications</li>
               </ul>
-              <Link to="/login" className="btn-outline">I am a business</Link>
+              <button onClick={() => navigate('/donor/register')} className="btn-outline">
+                I am a business
+              </button>
             </div>
             <div className="card associations">
               <div className="card-icon">
@@ -142,12 +135,15 @@ const Home: React.FC = () => {
                 <li><i className="fas fa-check-circle"></i> Collection planning</li>
                 <li><i className="fas fa-check-circle"></i> Impact statistics</li>
               </ul>
-              <Link to="/login" className="btn-primary">I am an association</Link>
+              <button onClick={() => navigate('/beneficiary/register')} className="btn-primary">
+                I am an association
+              </button>
             </div>
           </div>
         </div>
       </section>
 
+      {/* ========== IMPACT SECTION ========== */}
       <section id="impact" className="impact">
         <div className="container">
           <h2 className="section-title">Food waste in Algeria</h2>
@@ -176,17 +172,23 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* ========== CTA SECTION ========== */}
       <section className="cta">
         <div className="container">
           <h2>Ready to make a difference?</h2>
-          <p>Join our community and participate in the fight against food waste today</p>
+          <p>Join our community and participate in the fight against food insecurity</p>
           <div className="cta-buttons">
-            <Link to="/donor/register" className="btn-outline">Create a business account</Link>
-            <Link to="/beneficiary/register" className="btn-primary">Create an association account</Link>
+            <button onClick={() => navigate('/donor/register')} className="btn-outline">
+              Create a business account
+            </button>
+            <button onClick={() => navigate('/beneficiary/register')} className="btn-primary">
+              Create an association account
+            </button>
           </div>
         </div>
       </section>
 
+      {/* ========== FOOTER ========== */}
       <footer className="footer">
         <div className="container">
           <div className="footer-grid">

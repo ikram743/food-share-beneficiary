@@ -1,6 +1,6 @@
 // src/pages/beneficiary/BenSurplus.tsx
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './BenSurplus.css';
 
 const BenSurplus = () => {
@@ -19,14 +19,13 @@ const BenSurplus = () => {
   ];
 
   const surplusItems = [
-    { id: 1, name: 'Ready Meals', donor: 'Al Salam Restaurant', quantity: '50 meals', expiry: '2024-12-31', location: 'Tunis' },
-    { id: 2, name: 'Fresh Bread', donor: 'Al Noor Bakery', quantity: '100 pieces', expiry: '2024-12-30', location: 'Ariana' },
-    { id: 3, name: 'Vegetables', donor: 'Al Fallah Market', quantity: '30 kg', expiry: '2024-12-29', location: 'Ben Arous' },
-    { id: 4, name: 'Fruits', donor: 'Fresh Market', quantity: '25 kg', expiry: '2024-12-28', location: 'Tunis' },
-    { id: 5, name: 'Milk', donor: 'Dairy Farm', quantity: '50 liters', expiry: '2024-12-27', location: 'Ariana' }
+    { id: 1, name: 'Ready Meals', donor: 'Al Salam Restaurant', quantity: '50 meals', expiry: '2024-12-31', location: 'Algiers' },
+    { id: 2, name: 'Fresh Bread', donor: 'Al Noor Bakery', quantity: '100 pieces', expiry: '2024-12-30', location: 'Oran' },
+    { id: 3, name: 'Vegetables', donor: 'Al Fallah Market', quantity: '30 kg', expiry: '2024-12-29', location: 'Constantine' },
+    { id: 4, name: 'Fruits', donor: 'Fresh Market', quantity: '25 kg', expiry: '2024-12-28', location: 'Algiers' }
   ];
 
-  const locations = ['all', 'Tunis', 'Ariana', 'Ben Arous'];
+  const locations = ['all', 'Algiers', 'Oran', 'Constantine'];
 
   const filteredItems = surplusItems.filter(item => {
     const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -39,11 +38,12 @@ const BenSurplus = () => {
     <div className="dashboard-wrapper">
       {/* Sidebar */}
       <div className="sidebar-wrapper">
-        <div className="sidebar-logo">
- 
-                <i className="fas fa-leaf"></i>
-                <span>FoodShare</span>
-              </div>
+        {/* اللوجو */}
+        <Link to="/" className="sidebar-logo">
+          <i className="fas fa-leaf"></i>
+          <span>FoodShare</span>
+        </Link>
+
         <div className="sidebar-menu">
           {menuItems.map(item => (
             <div
@@ -59,7 +59,13 @@ const BenSurplus = () => {
             </div>
           ))}
         </div>
-        <div className="sidebar-logout" onClick={() => navigate('/')}>
+
+        <div className="sidebar-home" onClick={() => navigate('/')}>
+          <span className="menu-icon">🏠</span>
+          <span className="menu-text">Back to Home</span>
+        </div>
+
+        <div className="sidebar-logout" onClick={() => navigate('/auth')}>
           <span className="menu-icon">🚪</span>
           <span className="menu-text">Logout</span>
         </div>
@@ -90,6 +96,7 @@ const BenSurplus = () => {
 
         <div className="results-count">Found {filteredItems.length} items</div>
 
+        {/* Surplus Grid */}
         <div className="card-grid">
           {filteredItems.map(item => (
             <div key={item.id} className="food-card">

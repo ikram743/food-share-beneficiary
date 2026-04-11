@@ -1,6 +1,6 @@
 // src/pages/beneficiary/BenReservations.tsx
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './BenReservations.css';
 
 const BenReservations = () => {
@@ -22,25 +22,57 @@ const BenReservations = () => {
     { id: 3, food: 'Vegetables', donor: 'Al Fallah Market', date: '2024-12-19', status: 'completed' }
   ];
 
+  const getStatusClass = (status: string) => {
+    switch(status) {
+      case 'confirmed': return 'status-confirmed';
+      case 'pending': return 'status-pending';
+      case 'completed': return 'status-completed';
+      default: return '';
+    }
+  };
+
+  const getStatusText = (status: string) => {
+    switch(status) {
+      case 'confirmed': return '✅ Confirmed';
+      case 'pending': return '⏳ Pending';
+      case 'completed': return '✔️ Completed';
+      default: return status;
+    }
+  };
+
   return (
     <div className="dashboard-wrapper">
       {/* Sidebar */}
       <div className="sidebar-wrapper">
-      <div className="sidebar-logo">
- 
-                <i className="fas fa-leaf"></i>
-                <span>FoodShare</span>
-              </div>
-  
+        {/* ====== اللوجو مثل باقي الصفحات ====== */}
+        <Link to="/" className="sidebar-logo">
+          <i className="fas fa-leaf"></i>
+          <span>FoodShare</span>
+        </Link>
+
         <div className="sidebar-menu">
           {menuItems.map(item => (
-            <div key={item.id} className={`menu-link ${activeMenu === item.id ? 'active' : ''}`} onClick={() => { setActiveMenu(item.id); navigate(item.path); }}>
+            <div
+              key={item.id}
+              className={`menu-link ${activeMenu === item.id ? 'active' : ''}`}
+              onClick={() => {
+                setActiveMenu(item.id);
+                navigate(item.path);
+              }}
+            >
               <span className="menu-icon">{item.icon}</span>
               <span className="menu-text">{item.name}</span>
             </div>
           ))}
         </div>
-        <div className="sidebar-logout" onClick={() => navigate('/')}>
+        
+        {/* زر العودة إلى Home */}
+        <div className="sidebar-home" onClick={() => navigate('/')}>
+          <span className="menu-icon">🏠</span>
+          <span className="menu-text">Back to Home</span>
+        </div>
+        
+        <div className="sidebar-logout" onClick={() => navigate('/auth')}>
           <span className="menu-icon">🚪</span>
           <span className="menu-text">Logout</span>
         </div>
@@ -50,7 +82,7 @@ const BenReservations = () => {
       <div className="content-wrapper">
         <div className="content-header">
           <h1>📋 My Reservations</h1>
-          <p>View and manage your reservations</p>
+          <p>View and manage your food reservations</p>
         </div>
 
         <div className="reservations-list">
@@ -61,7 +93,9 @@ const BenReservations = () => {
                 <p>{res.donor}</p>
                 <span>{res.date}</span>
               </div>
-              <div className={`status ${res.status}`}>{res.status}</div>
+              <div className={`status ${getStatusClass(res.status)}`}>
+                {getStatusText(res.status)}
+              </div>
             </div>
           ))}
         </div>

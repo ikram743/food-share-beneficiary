@@ -1,7 +1,7 @@
 .footer {
   background: #1a1a1a;
-  color: #f0f0f0;
-  padding: 60px 0 20px;
+  color: #e0e0e0;
+  padding: 60px 0 30px;
   font-family: 'Inter', sans-serif;
 }
 
@@ -14,11 +14,10 @@
 .footer-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  gap: 60px;
+  gap: 50px;
   margin-bottom: 40px;
 }
 
-/* القسم الأول: معلومات المنصة (كما هي) */
 .footer-about {
   padding-right: 20px;
 }
@@ -27,30 +26,28 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
-  color: #2ecc71;
-  margin-bottom: 20px;
+  color: var(--accent);
+  margin-bottom: 18px;
 }
 
 .footer-logo i {
-  font-size: 28px;
+  font-size: 24px;
 }
 
-.project-description {
+.footer-about p {
   color: #b0b0b0;
   line-height: 1.6;
-  font-size: 15px;
-  margin: 0;
+  font-size: 14px;
 }
 
-/* أنماط العناوين */
 .footer-links h4,
 .footer-contact h4 {
   color: white;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
-  margin-bottom: 25px;
+  margin-bottom: 22px;
   position: relative;
 }
 
@@ -60,13 +57,12 @@
   position: absolute;
   left: 0;
   bottom: -8px;
-  width: 40px;
-  height: 3px;
-  background: #2ecc71;
+  width: 35px;
+  height: 2px;
+  background: var(--accent);
   border-radius: 2px;
 }
 
-/* أنماط القوائم */
 .footer-links ul,
 .footer-contact ul {
   list-style: none;
@@ -74,29 +70,27 @@
 
 .footer-links li,
 .footer-contact li {
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
-/* أنماط الروابط العادية */
 .footer-links a {
   color: #b0b0b0;
   text-decoration: none;
   transition: all 0.3s ease;
-  font-size: 15px;
+  font-size: 14px;
   display: inline-block;
 }
 
 .footer-links a:hover {
-  color: #2ecc71;
+  color: var(--accent);
   transform: translateX(5px);
 }
 
-/* أنماط أزرار الروابط (للأقسام الداخلية) */
 .footer-link-btn {
   background: none;
   border: none;
   color: #b0b0b0;
-  font-size: 15px;
+  font-size: 14px;
   cursor: pointer;
   padding: 0;
   text-align: left;
@@ -105,48 +99,35 @@
 }
 
 .footer-link-btn:hover {
-  color: #2ecc71;
+  color: var(--accent);
   transform: translateX(5px);
 }
 
-/* أنماط قسم الاتصال */
 .footer-contact li {
   display: flex;
   align-items: center;
   gap: 10px;
   color: #b0b0b0;
-  font-size: 15px;
-}
-
-.footer-contact a {
-  color: #b0b0b0;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-contact a:hover {
-  color: #2ecc71;
+  font-size: 14px;
 }
 
 .footer-contact i {
-  color: #2ecc71;
+  color: var(--accent);
   width: 20px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
-/* السطر الأخير */
 .footer-bottom {
+  text-align: center;
   padding-top: 30px;
   border-top: 1px solid #333;
-  text-align: center;
 }
 
 .footer-bottom p {
   color: #888;
-  font-size: 14px;
+  font-size: 13px;
 }
 
-/* التجاوب مع الشاشات المتوسطة */
 @media (max-width: 968px) {
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -154,15 +135,14 @@
   }
 }
 
-/* التجاوب مع الجوال */
 @media (max-width: 768px) {
   .footer {
-    padding: 40px 0 20px;
+    padding: 45px 0 25px;
   }
 
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 35px;
   }
 
   .footer-about {
@@ -194,23 +174,12 @@
     justify-content: center;
   }
 
-  .footer-links a:hover {
-    transform: translateY(-2px);
-  }
-
   .footer-link-btn {
     text-align: center;
     width: 100%;
   }
-  
+
   .footer-link-btn:hover {
     transform: translateY(-2px);
-  }
-}
-
-/* للشاشات الصغيرة جداً */
-@media (max-width: 480px) {
-  .footer-bottom p {
-    font-size: 12px;
   }
 }

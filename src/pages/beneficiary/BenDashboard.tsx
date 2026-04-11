@@ -1,6 +1,5 @@
-// src/pages/beneficiary/BenDashboard.tsx
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './BenDashboard.css';
 
 const BenDashboard = () => {
@@ -17,27 +16,26 @@ const BenDashboard = () => {
   ];
 
   const stats = [
-    { icon: '🍲', number: '12', label: 'Available Surplus' },
-    { icon: '📌', number: '03', label: 'Active Reservations' },
-    { icon: '✅', number: '08', label: 'Completed Orders' }
+    { icon: '🍲', value: '12', label: 'Available Surplus' },
+    { icon: '📌', value: '03', label: 'Active Reservations' },
+    { icon: '✅', value: '08', label: 'Completed Orders' }
   ];
 
   const surplusItems = [
-    { id: 1, name: 'Ready Meals', donor: 'Al Salam Restaurant', quantity: '50 meals', expiry: '2024-12-31', location: 'Tunis' },
-    { id: 2, name: 'Fresh Bread', donor: 'Al Noor Bakery', quantity: '100 pieces', expiry: '2024-12-30', location: 'Ariana' },
-    { id: 3, name: 'Vegetables', donor: 'Al Fallah Market', quantity: '30 kg', expiry: '2024-12-29', location: 'Ben Arous' }
+    { id: 1, name: 'Ready Meals', donor: 'Al Salam Restaurant', quantity: '50 meals', expiry: '2024-12-31', location: 'Algiers' },
+    { id: 2, name: 'Fresh Bread', donor: 'Al Noor Bakery', quantity: '100 pieces', expiry: '2024-12-30', location: 'Oran' },
+    { id: 3, name: 'Vegetables', donor: 'Al Fallah Market', quantity: '30 kg', expiry: '2024-12-29', location: 'Constantine' }
   ];
 
   return (
     <div className="dashboard-wrapper">
       {/* Sidebar */}
       <div className="sidebar-wrapper">
-        
-               <div className="sidebar-logo">
- 
-                <i className="fas fa-leaf"></i>
-                <span>FoodShare</span>
-              </div>
+        <Link to="/" className="sidebar-logo">
+          <i className="fas fa-leaf"></i>
+          <span>FoodShare</span>
+        </Link>
+
         <div className="sidebar-menu">
           {menuItems.map(item => (
             <div
@@ -53,41 +51,48 @@ const BenDashboard = () => {
             </div>
           ))}
         </div>
-        <div className="sidebar-logout" onClick={() => navigate('/')}>
-          <span className="menu-icon">🚪</span>
-          <span className="menu-text">Logout</span>
+
+        <div className="sidebar-footer">
+          <div className="footer-btn home-btn" onClick={() => navigate('/')}>
+            <span>🏠</span>
+            <span>Back to Home</span>
+          </div>
+          <div className="footer-btn logout-btn" onClick={() => navigate('/auth')}>
+            <span>🚪</span>
+            <span>Logout</span>
+          </div>
         </div>
       </div>
 
       {/* Main Content */}
       <div className="content-wrapper">
-        <div className="content-header">
-          <h1>Welcome back, Ahmed!</h1>
+        <div className="welcome-header">
+          <h1>Welcome back, Ahmed! 👋</h1>
           <p>Here's what's happening with your food surplus today</p>
         </div>
 
         <div className="stats-row">
           {stats.map((stat, i) => (
-            <div key={i} className="stat-box">
-              <div className="stat-emoji">{stat.icon}</div>
-              <div className="stat-num">{stat.number}</div>
-              <div className="stat-title">{stat.label}</div>
+            <div key={i} className="stat-card">
+              <div className="stat-icon">{stat.icon}</div>
+              <div className="stat-value">{stat.value}</div>
+              <div className="stat-label">{stat.label}</div>
             </div>
           ))}
         </div>
 
-        <div className="surplus-card-list">
-          <div className="section-title">
+        <div className="surplus-section">
+          <div className="section-header">
             <h2>🍽️ Available Food Surplus</h2>
-            <button onClick={() => navigate('/beneficiary/surplus')}>View All →</button>
+            <button className="view-all" onClick={() => navigate('/beneficiary/surplus')}>View All →</button>
           </div>
-          <div className="card-grid">
+          <div className="surplus-grid">
             {surplusItems.map(item => (
-              <div key={item.id} className="food-card">
-                <span className="food-badge">Available</span>
+              <div key={item.id} className="surplus-card">
+                <span className="badge">Available</span>
                 <h3>{item.name}</h3>
-                <p className="food-donor">🏪 {item.donor}</p>
-                <div className="food-details">
+                <p className="donor">🏪 {item.donor}</p>
+                <div className="details">
                   <span>📦 {item.quantity}</span>
                   <span>📅 {item.expiry}</span>
                   <span>📍 {item.location}</span>

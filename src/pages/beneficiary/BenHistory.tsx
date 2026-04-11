@@ -1,6 +1,6 @@
 // src/pages/beneficiary/BenHistory.tsx
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './BenHistory.css';
 
 const BenHistory = () => {
@@ -26,20 +26,35 @@ const BenHistory = () => {
     <div className="dashboard-wrapper">
       {/* Sidebar */}
       <div className="sidebar-wrapper">
-       <div className="sidebar-logo">
- 
-                <i className="fas fa-leaf"></i>
-                <span>FoodShare</span>
-              </div>
+        {/* ====== اللوجو مثل Profile ====== */}
+        <Link to="/" className="sidebar-logo">
+          <i className="fas fa-leaf"></i>
+          <span>FoodShare</span>
+        </Link>
+
         <div className="sidebar-menu">
           {menuItems.map(item => (
-            <div key={item.id} className={`menu-link ${activeMenu === item.id ? 'active' : ''}`} onClick={() => { setActiveMenu(item.id); navigate(item.path); }}>
+            <div
+              key={item.id}
+              className={`menu-link ${activeMenu === item.id ? 'active' : ''}`}
+              onClick={() => {
+                setActiveMenu(item.id);
+                navigate(item.path);
+              }}
+            >
               <span className="menu-icon">{item.icon}</span>
               <span className="menu-text">{item.name}</span>
             </div>
           ))}
         </div>
-        <div className="sidebar-logout" onClick={() => navigate('/')}>
+        
+        {/* زر العودة إلى Home */}
+        <div className="sidebar-home" onClick={() => navigate('/')}>
+          <span className="menu-icon">🏠</span>
+          <span className="menu-text">Back to Home</span>
+        </div>
+        
+        <div className="sidebar-logout" onClick={() => navigate('/auth')}>
           <span className="menu-icon">🚪</span>
           <span className="menu-text">Logout</span>
         </div>

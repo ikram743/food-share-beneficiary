@@ -1,6 +1,6 @@
 // src/pages/beneficiary/BenSettings.tsx
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './BenSettings.css';
 
 const BenSettings = () => {
@@ -61,8 +61,7 @@ const BenSettings = () => {
     });
   };
 
-  const handleSaveSettings = () => {
-    console.log('Settings saved:', { notifications, preferences, privacy });
+  const handleSave = () => {
     alert('Settings saved successfully!');
   };
 
@@ -70,13 +69,12 @@ const BenSettings = () => {
     <div className="dashboard-wrapper">
       {/* Sidebar */}
       <div className="sidebar-wrapper">
-        
-               <div className="sidebar-logo">
- 
-                <i className="fas fa-leaf"></i>
-                <span>FoodShare</span>
-              </div>
-                
+        {/* اللوجو */}
+        <Link to="/" className="sidebar-logo">
+          <i className="fas fa-leaf"></i>
+          <span>FoodShare</span>
+        </Link>
+
         <div className="sidebar-menu">
           {menuItems.map(item => (
             <div
@@ -92,7 +90,13 @@ const BenSettings = () => {
             </div>
           ))}
         </div>
-        <div className="sidebar-logout" onClick={() => navigate('/')}>
+
+        <div className="sidebar-home" onClick={() => navigate('/')}>
+          <span className="menu-icon">🏠</span>
+          <span className="menu-text">Back to Home</span>
+        </div>
+
+        <div className="sidebar-logout" onClick={() => navigate('/auth')}>
           <span className="menu-icon">🚪</span>
           <span className="menu-text">Logout</span>
         </div>
@@ -101,7 +105,6 @@ const BenSettings = () => {
       {/* Main Content */}
       <div className="content-wrapper">
         <div className="settings-container">
-          {/* Header */}
           <div className="settings-header">
             <h1>⚙️ Settings</h1>
             <p>Manage your account preferences and notifications</p>
@@ -130,16 +133,6 @@ const BenSettings = () => {
                 </div>
                 <label className="switch">
                   <input type="checkbox" checked={notifications.push} onChange={() => handleNotificationChange('push')} />
-                  <span className="slider"></span>
-                </label>
-              </div>
-              <div className="setting-item">
-                <div className="setting-info">
-                  <span className="setting-title">SMS Notifications</span>
-                  <span className="setting-desc">Receive text message alerts</span>
-                </div>
-                <label className="switch">
-                  <input type="checkbox" checked={notifications.sms} onChange={() => handleNotificationChange('sms')} />
                   <span className="slider"></span>
                 </label>
               </div>
@@ -266,7 +259,7 @@ const BenSettings = () => {
           </div>
 
           {/* Save Button */}
-          <button className="save-settings-btn" onClick={handleSaveSettings}>
+          <button className="save-settings-btn" onClick={handleSave}>
             <i className="fas fa-save"></i> Save All Settings
           </button>
         </div>

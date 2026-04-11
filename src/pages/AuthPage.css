@@ -1,5 +1,4 @@
-/* pages/AuthPage.css */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 
 * {
   margin: 0;
@@ -7,9 +6,25 @@
   box-sizing: border-box;
 }
 
+:root {
+  --primary: #10b981;
+  --primary-dark: #059669;
+  --primary-light: #d1fae5;
+  --accent: #f97316;
+  --accent-dark: #ea580c;
+  --accent-light: #ffedd5;
+  --text-dark: #1e293b;
+  --text-light: #475569;
+  --text-muted: #64748b;
+  --background: #fef9f1;
+  --white: #ffffff;
+  --gray-light: #f1f5f9;
+  --gray-medium: #e2e8f0;
+}
+
 .auth-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #1e3a2f 0%, #2a5a45 100%);
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   font-family: "Inter", sans-serif;
   display: flex;
   align-items: center;
@@ -19,16 +34,14 @@
 
 .auth-container {
   display: flex;
-  max-width: 1300px;
+  max-width: 1100px;
   width: 100%;
-  height: min(850px, 95vh);
-  background: white;
-  border-radius: 2.5rem;
+  background: var(--white);
+  border-radius: 2rem;
   overflow: hidden;
-  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
-/* Left Panel - Dynamic Backgrounds */
 .auth-left {
   flex: 1;
   color: white;
@@ -38,7 +51,7 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
-  transition: background 0.5s ease;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
 }
 
 .auth-left::before {
@@ -48,28 +61,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(
-    circle at 20% 50%,
-    rgba(255, 255, 255, 0.1) 0%,
-    transparent 50%
-  );
+  background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
   pointer-events: none;
-}
-
-.signin-bg {
-  background: linear-gradient(145deg, #1e3a2f, #0f2b1f);
-}
-
-.selection-bg {
-  background: linear-gradient(145deg, #1e4a3a, #0a3525);
-}
-
-.donor-bg {
-  background: linear-gradient(145deg, #1e4a3a, #0a3525);
-}
-
-.beneficiary-bg {
-  background: linear-gradient(145deg, #1e4a3a, #0a3525);
 }
 
 .auth-left-content {
@@ -100,7 +93,7 @@
 
 .logo i {
   font-size: 2rem;
-  color: #5fa07e;
+  color: var(--accent);
 }
 
 .logo span {
@@ -144,7 +137,7 @@
 }
 
 .feature-item-left i {
-  color: #5fa07e;
+  color: var(--accent);
   font-size: 1.1rem;
 }
 
@@ -158,7 +151,7 @@
 }
 
 .quote-box i {
-  color: #5fa07e;
+  color: var(--accent);
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
@@ -201,13 +194,12 @@
 }
 
 .trust-badge i {
-  color: #5fa07e;
+  color: var(--accent);
 }
 
-/* Right Panel - Flip Container */
 .auth-right {
   flex: 1;
-  background: white;
+  background: var(--white);
   padding: 3rem;
   display: flex;
   align-items: center;
@@ -234,7 +226,6 @@
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -246,24 +237,22 @@
   transform: rotateY(180deg);
 }
 
-/* Form Container */
 .auth-form-container {
   width: 100%;
 }
 
 .auth-form-container h2 {
-  color: #1e3a2f;
+  color: var(--primary);
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
 
 .subtitle {
-  color: #6b8f7c;
+  color: var(--text-muted);
   margin-bottom: 2rem;
   font-size: 0.95rem;
 }
 
-/* Account Type Grid */
 .account-type-grid {
   display: flex;
   flex-direction: column;
@@ -274,29 +263,29 @@
 .type-card {
   width: 100%;
   padding: 1.5rem;
-  border: 2px solid #e2eee8;
+  border: 2px solid var(--gray-medium);
   border-radius: 1.5rem;
-  background: white;
+  background: var(--white);
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: left;
 }
 
 .type-card:hover {
-  border-color: #3b7a5e;
+  border-color: var(--accent);
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px rgba(59, 122, 94, 0.2);
+  box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.2);
 }
 
 .type-card.selected {
-  border-color: #3b7a5e;
-  background: #f0f9f4;
+  border-color: var(--accent);
+  background: var(--accent-light);
 }
 
 .type-icon {
   width: 50px;
   height: 50px;
-  background: #f0f7f3;
+  background: var(--primary-light);
   border-radius: 1rem;
   display: flex;
   align-items: center;
@@ -306,17 +295,17 @@
 
 .type-icon i {
   font-size: 1.5rem;
-  color: #3b7a5e;
+  color: var(--primary);
 }
 
 .type-card h3 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
-  color: #1e3a2f;
+  color: var(--primary);
 }
 
 .type-description {
-  color: #6b8f7c;
+  color: var(--text-light);
   font-size: 0.9rem;
   margin-bottom: 1rem;
   line-height: 1.5;
@@ -332,15 +321,14 @@
   gap: 0.5rem;
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
-  color: #2d4a3b;
+  color: var(--text-dark);
 }
 
 .type-benefits i {
-  color: #3b7a5e;
+  color: var(--accent);
   font-size: 1rem;
 }
 
-/* Form Styles */
 .auth-form {
   display: flex;
   flex-direction: column;
@@ -355,7 +343,7 @@
 
 .form-group label {
   font-weight: 600;
-  color: #2d4a3b;
+  color: var(--text-dark);
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -365,18 +353,18 @@
 .form-group select {
   width: 100%;
   padding: 0.85rem 1rem;
-  border: 1.5px solid #e2eee8;
+  border: 1.5px solid var(--gray-medium);
   border-radius: 1rem;
   font-size: 0.95rem;
   transition: all 0.3s ease;
-  background: #fafdfb;
+  background: var(--background);
 }
 
 .form-group input:focus,
 .form-group select:focus {
   outline: none;
-  border-color: #3b7a5e;
-  box-shadow: 0 0 0 3px rgba(59, 122, 94, 0.1);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
 }
 
 .form-options {
@@ -393,28 +381,27 @@
   align-items: center;
   gap: 0.5rem;
   cursor: pointer;
-  color: #2d4a3b;
+  color: var(--text-dark);
 }
 
 .checkbox-label input[type="checkbox"] {
   width: auto;
-  accent-color: #3b7a5e;
+  accent-color: var(--primary);
 }
 
 .forgot-link {
   background: none;
   border: none;
-  color: #3b7a5e;
+  color: var(--accent);
   font-weight: 500;
   cursor: pointer;
   text-decoration: none;
-  border-bottom: 1px dashed #bcd0c5;
+  border-bottom: 1px dashed var(--gray-medium);
   font-size: 0.9rem;
 }
 
-/* Buttons */
 .btn-primary {
-  background: #1e3a2f;
+  background: var(--accent);
   color: white;
   border: none;
   padding: 1rem;
@@ -427,15 +414,15 @@
 }
 
 .btn-primary:hover {
-  background: #2d5a47;
+  background: var(--accent-dark);
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px -5px rgba(30, 58, 47, 0.4);
+  box-shadow: 0 10px 20px -5px rgba(249, 115, 22, 0.4);
 }
 
 .btn-back {
   background: transparent;
-  color: #3b7a5e;
-  border: 2px solid #3b7a5e;
+  color: var(--accent);
+  border: 2px solid var(--accent);
   padding: 1rem;
   border-radius: 2rem;
   font-weight: 600;
@@ -450,14 +437,14 @@
 }
 
 .btn-back:hover {
-  background: #f0f9f4;
+  background: var(--accent-light);
   transform: translateY(-2px);
 }
 
 .link-btn {
   background: none;
   border: none;
-  color: #1e6e4f;
+  color: var(--primary);
   font-weight: 700;
   cursor: pointer;
   text-decoration: underline;
@@ -465,10 +452,9 @@
 }
 
 .link-btn:hover {
-  color: #0d4a35;
+  color: var(--primary-dark);
 }
 
-/* Form Actions */
 .form-actions {
   display: flex;
   flex-direction: column;
@@ -476,11 +462,10 @@
   margin-top: 0.5rem;
 }
 
-/* Divider */
 .divider {
   display: flex;
   align-items: center;
-  color: #8aa99b;
+  color: var(--text-muted);
   font-size: 0.8rem;
   margin: 1.5rem 0;
 }
@@ -490,26 +475,24 @@
   content: "";
   flex: 1;
   height: 1px;
-  background: #d0e0d8;
+  background: var(--gray-medium);
 }
 
 .divider span {
   padding: 0 1rem;
 }
 
-/* Toggle Panel */
 .toggle-panel {
   text-align: center;
-  color: #4a6b5c;
+  color: var(--text-light);
 }
 
-/* Checkbox Group */
 .checkbox-group {
   margin: 0.5rem 0;
 }
 
 .checkbox-group a {
-  color: #1e6e4f;
+  color: var(--primary);
   text-decoration: none;
   font-weight: 500;
 }
@@ -518,7 +501,25 @@
   text-decoration: underline;
 }
 
-/* Scrollbar Styling */
+.back-home {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.back-home button {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.3s;
+  font-family: inherit;
+}
+
+.back-home button:hover {
+  color: var(--accent);
+}
+
 .flip-front::-webkit-scrollbar,
 .flip-back::-webkit-scrollbar {
   width: 6px;
@@ -526,37 +527,32 @@
 
 .flip-front::-webkit-scrollbar-track,
 .flip-back::-webkit-scrollbar-track {
-  background: #f0f7f3;
+  background: var(--primary-light);
   border-radius: 3px;
 }
 
 .flip-front::-webkit-scrollbar-thumb,
 .flip-back::-webkit-scrollbar-thumb {
-  background: #3b7a5e;
+  background: var(--primary);
   border-radius: 3px;
 }
 
-/* Responsive */
 @media (max-width: 968px) {
   .auth-page {
     padding: 1rem;
   }
-
   .auth-container {
     flex-direction: column;
     height: auto;
     min-height: 95vh;
     border-radius: 2rem;
   }
-
   .auth-left {
     padding: 2rem;
   }
-
   .auth-right {
     padding: 2rem;
   }
-
   .flip-container {
     height: 600px;
   }
@@ -566,34 +562,27 @@
   .auth-page {
     padding: 0.5rem;
   }
-
   .auth-container {
     border-radius: 1.5rem;
   }
-
   .auth-left,
   .auth-right {
     padding: 1.5rem;
   }
-
   .auth-left h1 {
     font-size: 2rem;
   }
-
   .left-icon {
     font-size: 2.5rem;
   }
-
   .flip-container {
     height: 650px;
   }
-
   .form-options {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.75rem;
   }
-
   .type-card {
     padding: 1.2rem;
   }
